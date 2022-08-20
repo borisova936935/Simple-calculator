@@ -12,7 +12,7 @@ class Calculator {
     }
 
     delete() {
-
+        this.currentOperand = this.currentOperand.toString().slice(0, -1)
     }
 
     appendNumber(number) {
@@ -35,7 +35,31 @@ class Calculator {
     }
 
     compute() {
-
+        let computation
+        const prev = parseFloat(this.previousOperand)
+        const current = parseFloat(this.currentOperand)
+        if (isNaN(prev) || isNaN(current)) {
+            return
+        }
+        switch (this.operation) {
+            case '+':
+                computation = prev + current
+                break
+            case '-':
+                computation = prev - current
+                break
+            case '*':
+                computation = prev * current
+                break
+            case '÷':
+                computation = prev / current
+                break
+            default:
+                return
+        }
+        this.currentOperand = computation
+        this.operation = undefined
+        this.previousOperand = ''
     }
 
     updateDisplay() {
@@ -47,7 +71,7 @@ class Calculator {
 const numberButtons = document.querySelectorAll('[data-number]')
 const operationButtons = document.querySelectorAll('[data-operation]')
 const equalsButton = document.querySelector('[data-equals]')
-const deleteBUtton = document.querySelector('[data-delete]')
+const deleteButton = document.querySelector('[data-delete]')
 const allClearButton = document.querySelector('[data-all-clear]')
 const previousOperandElement = document.querySelector('[data-previous-operand]')
 const currentOperandElement = document.querySelector('[data-current-operand]')
@@ -68,4 +92,17 @@ operationButtons.forEach(button => {
     })
 })
 
+equalsButton.addEventListener('click', buuton => {
+    calculator.compute()
+    calculator.updateDisplay()
+})
 
+allClearButton.addEventListener('click', buuton => {
+    calculator.clear()
+    calculator.updateDisplay()
+})
+
+deleteButton.addEventListener('click', buuton => {
+    calculator.delete()
+    calculator.updateDisplay()
+})
