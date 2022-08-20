@@ -3,7 +3,7 @@
 *::after {
     box-sizing: border-box;
     font-family: Comic Sans MS, sans-serif;
-    font-weight: bold;
+    font-weight: normal;
     font-size: 1.3rem;
 }
 
@@ -20,11 +20,12 @@ body {
     min-height: 100vh;
     grid-template-columns: repeat(4, 100px);
     grid-template-rows: minmax(120px, auto) repeat(5, 100px);
+    background: rgba(2, 2, 2, 0.250);
 }
 
 .calculator-grid>button {
     cursor: pointer;
-    font: size 2rem;
+    font-size: 2rem;
     border: 1.5px solid white;
     outline: none;
     background-color: rgba(255, 255, 255, 0.75);
@@ -32,7 +33,7 @@ body {
 }
 
 .calculator-grid>button:hover {
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.90);
 }
 
 .span-two {
@@ -41,7 +42,7 @@ body {
 
 .output {
     grid-column: 1 / -1;
-    background-color: rgba(2, 2, 2, 0.250);
+    background-color: rgba(2, 2, 2, 0.395);
     display: flex;
     align-items: flex-end;
     justify-content: space-around;
@@ -49,7 +50,6 @@ body {
     padding: 10px;
     word-wrap: break-word;
     word-break: break-all;
-    border: 1px solid white
 }
 
 .output .previous-operand {
