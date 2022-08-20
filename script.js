@@ -62,12 +62,19 @@ class Calculator {
         this.previousOperand = ''
     }
 
-    getDistplay
+    getDistplayNumber(number){
+        const floatNumber = parseFloat(number)
+        if (isNaN(floatNumber)) {
+            return ''
+        }
+        return floatNumber.toLocaleString('en')
+    }
 
     updateDisplay() {
-        this.currentOperandElement.innerText = this.currentOperand
+        this.currentOperandElement.innerText = 
+        this.getDistplayNumber(this.currentOperand)
         if (this.operation != null) {
-            this.previousOperandElement.innerText = `${this.previousOperand} ${this.operation}`
+            this.previousOperandElement.innerText = `${this.getDistplayNumber(this.previousOperand)} ${this.operation}`
         }
     }
 }
